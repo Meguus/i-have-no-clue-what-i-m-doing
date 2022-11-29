@@ -1,16 +1,15 @@
 ﻿G.AddData({
-name:'Example mod',
-author:'Orteil',
+name:'testmod',
+author:'Meguus',
 desc:'A simple example mod that adds hot peppers and hot sauce.',
 engineVersion:1,
 manifest:'modManifest.js',
-sheets:{'test':'https://github.com/Meguus/i-have-no-clue-what-i-m-doing/blob/main/basesheet.png'},//custom stylesheet (note : broken in IE and Edge for the time being)
+sheets:{},//custom stylesheet (note : broken in IE and Edge for the time being)
 func:function()
 {
 	new G.Unit({
 		name:'smart man',
 		desc:'@Big smart guy yes.',
-		icon:[5,2],
 		cost:{'food':500},
 		use:{'worker':1},
 		effects:[
@@ -22,7 +21,6 @@ func:function()
 	new G.Tech({
 		name:'School',
 		desc:'@unlocks smart man, and gives sience',
-		icon:[5,2],
 		cost:{'insight':100},
 		req:{'oral tradition':true,'steel-making':true},
 		effects:[
