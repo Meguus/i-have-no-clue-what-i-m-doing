@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css.css">
+  <script>
+    //blank char "⠀"
+    //variable definition zone
+    var pins = 0;
+    var wire = 100;
+    var money = 0;
+    var interest = 0;
+    var price = 1;
+    var wireprice = 15;
+    var time = 0;
+    var pps = 0;
+    var autopin = 0;
+    var autopinprice = 15;
+    var totalpin = 0;
+    var awire = 100;
+    var upwireprice = 100;
+    var megapinamount = 0;
+    var megapinprice = 100;
+    var cs = 1;
+    var basecs = 100;
+    var csmultiplier = 1;
+    var whatwhere = [0,1,2,3];
+    var resstart = 1;
+    var ppsmult = 1;
+    var repeatsell = 1;
+    let matterleft = 100;
+    let wireproduced = 0;
+    let converterprice = 1000;
+    let converteramount = 0;
+    let collecterprice = 1000;
+    let collecteramount  = 0;
+    let mattercolect = 0;
+    let Methtime = 1;
+    let Methamount = [0,0,0,0,0,0];//quality 0 trough 5
+    let Methquality = 0;
+    let waltuhs = 0;
+    let petes = 0;
+    let policerisk = 0;
+    let drugrisk = 0;
+    let methxp = 0;
+    let cartelrisk = 0;
+    let cookmid = 0;
+    let methm = 0;
+    let debt = 0;
+    //var zone end
+
+
+
+
+//cheat functions
+function Game_addpins(amount) {
+pins = pins + amount;
+totalpin = pins + amount;
+return "bitch";
+}
+function Game_addmoney(amount) {
+money = money + amount;
+return "bitch";
+}
+function Game_addwire(amount) {
+wire = wire + amount;
+}
+
+
+    //Esential functions
+    /*
+These fuctions are ment to be called inside of other functions, rand(min, max) generates a random number between min and
+max while updategraphics runs every single "check id then change the text"
+    */
+
+
+    function rand(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+    }
+
+
+function start() {
+  cs = (basecs - Math.pow(price,2)*csmultiplier)/100;
+  document.getElementById("divwmake").style.visibility ="hidden";
+}
+function upgradebought(butsmack) {
+switch (whatwhere[butsmack]) {
+
+
+case 1: //get ads
+if (money > 100) {
+money = money - 100;
+csmultiplier = csmultiplier + 0.1;
+document.getElementById("butt" + butsmack).innerHTML = "Get even more ads. (cost 150)"
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+
+case 2: 
+if (money > 100) {
+money = money - 100;
+awire = awire + 50;
+document.getElementById("butt" + butsmack).innerHTML = "Even better wire's (cost 150)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+case 3:
+if (money > 100) {
+money = money - 100;
+ppsmult = ppsmult + 1;
+document.getElementById("butt" + butsmack).innerHTML = "Start construction on a research center. (cost 200)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+
+case 4: 
+if (money > 150) {
+money = money - 150;
+csmultiplier = csmultiplier + 0.2;
+document.getElementById("butt" + butsmack).innerHTML = "Post fake reviews on some website. (cost 200)"
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+
+case 5: 
+if (money > 150) {
+money = money - 150;
+awire = awire + 100;
+document.getElementById("butt" + butsmack).innerHTML = "Strike a deal with the wirecorp (cost 200 money)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+
+case 6:
+if (money > 200) {
+money = money - 200;
+resstart = 1;
+document.getElementById("butt" + butsmack).innerHTML = "Research even better autopins (cost 300 moneys.)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+case 7:
+if (money > 200) {
+money = money - 200;
+csmultiplier = csmultiplier + 0.7;
+document.getElementById("butt" + butsmack).innerHTML = "broadcast advertisements (Cost: 500 moneys)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+
+case 8:
+if (money > 200) {
+money = money - 200;
+awire = awire + 500;
+document.getElementById("butt" + butsmack).innerHTML = "use less wire per wire(Cost: 500 moneys)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 9:
+if (money > 300) {
+money = money - 300;
+ppsmult = ppsmult + 1;
+document.getElementById("butt" + butsmack).innerHTML = "BUILD THE MEGA PIN(Cost: 500 moneys, 25 autopin's)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 10:
+if (money > 500)  {
+money = money - 500;
+csmultiplier = csmultiplier + 1;
+document.getElementById("butt" + butsmack).innerHTML = "Put out even even even more ads and sell in bulk(price: 750)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 11:
+if (money > 500)  {
+money = money - 500;
+awire = awire + 500;
+document.getElementById("butt" + butsmack).innerHTML = "Start turning materials into more wire";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 12:
+if (money>500 && autopin > 24) {
+  money = money - 500.
+  autopin = autopin - 25;
+  document.getElementById("megapindiv").style.display='block';
+  document.getElementById("megapinamount").style.display='block';
+  document.getElementById("megapinprice").style.display='block';
+  document.getElementById("megabutton").style.display='block';
+  updategraphics();
+  document.getElementById("butt" + butsmack).innerHTML = "Autowire/megawire X5 (cost: 750)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 13:
+if (money>750 ) {
+  money = money - 750;
+ csmultiplier = csmultiplier + 1;
+ repeatsell + 11;
+ document.getElementById("butt" + butsmack).innerHTML = "Create deceptive and baltenly wrong ads and invole politics (cost:750)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 14:
+if (money > 999) {
+money = money - 1000;  
+document.getElementById("divwmake").style.visibility ="visible";
+turnmatter();
+document.getElementById("butt" + butsmack).innerHTML = "That's all!";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 15:
+if (money>750 ) {
+money = money - 750;
+ppsmult = ppsmult*5;
+ document.getElementById("butt" + butsmack).innerHTML = "Buy an RV cost: 10000";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 16:
+if (money>750 ) {
+money = money - 750;
+repeatsell + 111;
+csmultiplier = csmultiplier + 0.5;
+document.getElementById("butt" + butsmack).innerHTML = "Nuke ohio (cost: 10000)";
+whatwhere[butsmack] = whatwhere[butsmack]+3;}
+break;
+case 17:
+break;
+case 18:
+if (money > 10000) {
+Methtime = 1;
+document.getElementById("butt" + butsmack).innerHTML = "That's all";
+whatwhere[butsmack] = whatwhere[butsmack]+3;
+money -= 10000;
+break;
+}
+case 19: 
+if (money > 10000) {
+csmultiplier = 1;
+csbase = 999;
+money -= 10000;
+repeatsell = 111111;
+document.getElementById("butt" + butsmack).innerHTML = "That's all";
+whatwhere[butsmack] = whatwhere[butsmack]+3;
+} break;
+}
+}
+
+
+
+
+
+    function updategraphics() {
+  cs = (basecs*csmultiplier)/100;
+  money = (Math.round((money)*100))/100;
+  document.getElementById("amountpin").innerHTML = "unsold pins: "+ pins;
+  document.getElementById("amountwire").innerHTML = "wire left: "+ wire;
+  document.getElementById("amountwire1").innerHTML = "wire left: "+ wire;
+  document.getElementById("money").innerHTML = "money: "+money;
+  document.getElementById("money2").innerHTML = "money: "+money;
+  document.getElementById("price").innerHTML = "⠀price per pin: "+ price;
+  document.getElementById("bulk").innerHTML = "pins sold per sell "+ repeatsell;
+  document.getElementById("customer").innerHTML = cs*100;
+  document.getElementById("wireprice").innerHTML = "price per wire: "+ wireprice;
+  document.getElementById("autopinamount").innerHTML = "autopin's: "+ autopin;
+  document.getElementById("autopinprice").innerHTML = "autopin price:"+ autopinprice;
+  document.getElementById("totalpin").innerHTML = "Total pins: "+totalpin;
+  document.getElementById("avsold").innerHTML = "average time between selling pins: "+(Math.round((((Math.pow(price,2)*1.2)/cs))*100)/100);
+  document.getElementById("pinpersecond").innerHTML = "Pins per second: "+Math.floor(pps*ppsmult);
+  document.getElementById("megapinamount").innerHTML = "megapin's: "+megapinamount;
+  document.getElementById("megapinprice").innerHTML = "megapinpprice: "+megapinprice;
+  document.getElementById("Resourcesleft").innerHTML= "Resources left: "+matterleft;
+  document.getElementById("converteramount").innerHTML= "Converters: "+converteramount;
+  document.getElementById("converterprice").innerHTML= "converter price: "+converterprice;
+  document.getElementById("collecteramount").innerHTML= "Collecters: "+collecteramount;
+  document.getElementById("collecterprice").innerHTML= "Collecter price: "+collecterprice;
+    }
+
+
+
+
+function buyconverter() {
+if (money >= converterprice) {
+money = money - converterprice;
+converteramount++;
+wireproduced = wireproduced + 1000;
+updategraphics();
+}
+}
+
+function buycollecter() {
+if (money >= collecteramount){
+money = money - collecterprice;
+collecteramount++;
+mattercolect = mattercolect + 1251;
+updategraphics();
+}
+
+
+}
+
+    //makes 1 pin and removes 1 wire
+    function mkpin() {
+    if (wire > 0) {
+      pins++;
+      totalpin++;
+      wire--;
+      updategraphics();
+    }
+    }
+
+    function buywire() {
+      if (money > wireprice-1) {
+        money -= wireprice;
+        wire += awire;
+        updategraphics();
+      }
+    }
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------
+function turnmatter() {
+if (matterleft > wireproduced) {
+matterleft = matterleft - wireproduced;
+wire = wire + wireproduced;
+}
+matterleft = matterleft + mattercolect;
+if (collecteramount > 0) {
+matterleft += rand(1,111);
+}
+setTimeout(turnmatter,100);
+updategraphics();
+}
+
+
+window.onload = function() {  
+  document.getElementById("megapindiv").style.display='none';
+  document.getElementById("megabutton").style.display='none';
+
+
+     function test() {
+      let repeatsell1 = repeatsell + rand(-2,2);
+      if (repeatsell1 <= 0) {
+      repeatsell1 = 1;
+      }
+
+      for (let i = 0;i <= repeatsell;i++) {
+     if (pins > 0) {
+      pins--;
+      money = Math.round((money+price)*100)/100;
+     }
+     } updategraphics();
+     time = ((((Math.pow(price,2)*1000)/cs)/rand(0.50,2))*1.2);
+
+     
+     setTimeout(test,time);
+    
+     }
+
+
+
+
+
+     function pinspersecond() {
+    if (wire > 0) {
+      wire = wire-Math.floor(pps*ppsmult);
+      if (wire < 0) {
+        pins= pins -Math.abs(wire);
+        totalpin= totalpin - Math.abs(wire);
+        wire = 0;
+      }
+      pins = pins + Math.floor(pps*ppsmult);
+      totalpin = totalpin + Math.floor(pps*ppsmult);
+      updategraphics();
+      }
+      setTimeout(pinspersecond,1000);
+      }
+
+
+
+
+
+      function refresh10() {
+        wireprice = (15 + ((wire+1)/100)) + rand(-5,15);
+        setTimeout(refresh10,10000);
+      }
+
+
+
+
+
+     setTimeout(refresh10,10000);
+     setTimeout(pinspersecond,1000);
+     time = ((price*1000)/rand(0.50,2));
+     setTimeout(test,time);
+ }
+
+//-------------------------------------------------------------------------------------------------------------------------------
+//Raise and lower price code
+ function raiseprice() {
+    price = Math.round((price+0.01)*100)/100
+
+    updategraphics();
+  }
+
+
+
+
+
+
+  function lowerprice() {
+    if(price > 0.01) {
+    price = Math.round((price-0.01)*100)/100
+    }
+    updategraphics();
+  }
+
+
+
+
+
+
+//Autopin code
+function buyautopin() {
+if (money > autopinprice-0.01) {
+  money -= autopinprice;
+  autopin++;
+  pps++;
+  autopinprice = (autopinprice + Math.sqrt(autopinprice/6));
+  updategraphics();
+} else {
+  alert("not enough cash!");
+}
+}
+
+
+
+
+
+function buymegapin() {
+if (money > megapinprice-0.01) {
+  money -=megapinprice;
+  megapinamount++;
+  pps += 100;
+  megapinprice = (megapinprice + Math.sqrt(megapinprice/1.5))+15;
+  updategraphics();
+}}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+function updatemeth() {
+    
+  }
+
+function cook() {
+  if (methm > 0) {
+    methm--;
+      while(cookmid > 100) {
+        if(methxp >= rand(0,100)) {
+   cookmid = cookmid + rand(7,25);
+      } else alert("You had to throw out the batch...");
+    } 
+
+    if (methxp > 80 && rand(0,100) > 90) {
+      methamount[5]++;
+    } else if (methxp > 60 && rand(0,100) > 75)  {
+methamount[4]++;
+  } else if (methxp > 50 && rand(0,100) > 60) {
+    methamount[3]++;
+  } else if (methxp > 40 && rand(0,100) > 40) {
+    methamount[2]++;
+  } else if (methxp > 20 && rand(0,100) > 20) {
+    methamount[1]++;
+  } else {
+  methamount[0]++;
+  }
+}
+}
+
+
+
+function cheat() {
+money = 9999999999999999999999999999;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------
+    </script>
+</head>
+
+<body>
+
+
+<div id="allpin">
+  <div id="headdiv">
+<h1 id="money"></h1> <br>
+<h2 id="totalpin"></h2> <br>
+  </div>
+
+
+
+<button type="button"
+onclick=mkpin()>
+make pin</button> 
+<br><br>
+
+
+
+
+
+<div id="pindiv">
+  <b>Pin stuff</b><br><hr> 
+<p id="amountpin"></p>
+<br>
+<button type="button"onclick= 'raiseprice()' >raise</button> <button type="button"onclick= "lowerprice()" >lower</button>
+<span id="price"></span> 
+<br><br>
+<span>Customer satifaction: </span>
+<span id="customer"></span> <br><br><br>
+<span id="bulk"></span> <br>
+<p id="avsold"></p> 
+<p id="pinpersecond"></p>
+</div>
+
+
+
+<div id="divwmake">
+
+<b>Wire creation stuff</b>
+<hr>
+<span id="amountwire1"></span>
+<br>
+<span id="Resourcesleft"></span>
+<br>
+<span id="converteramount"></span> <br>
+<span id="converterprice"></span> <br>
+<button type="button"onclick= 'buyconverter()' >Buy converters</button> <br>
+<span id="collecteramount"></span> <br>
+<span id="collecterprice"></span> <br>
+<button type="button"onclick= 'buycollecter()' >Buy collecter</button>
+</div>
+
+
+
+<div id="divcs">
+  <b>Customer satifaction stuff</b>
+  <hr>
+  <button id="butt1"type="button" class="buybutton"onclick='upgradebought(1)'>Get advertising (Cost: 100)</button> <br>
+  <button id="butt2"type="button" class="buybutton"onclick='upgradebought(2)'>Better wire usage(cost: 100)</button> <br>
+  <button id="butt3"type="button" class="buybutton"onclick='upgradebought(3)'>Stronger autopins (Cost: 100)</button> <br>
+</div>
+
+
+
+
+
+<div id="buydiv">
+    <b>buying stuff</b>
+<hr>
+<p id="amountwire"></p>
+<p id="wireprice"></p>
+
+<button type="button"onclick= 
+    'buywire()' >buy wire</button> 
+<br><br>
+<p id="autopinamount"></p> 
+    <button type="button"onclick= 'buyautopin()' >buy autopin</button>
+<p id="autopinprice"></p> <br><br>
+<br>
+
+
+
+<div id="megapindiv">
+<p id ="megapinamount">wha</p> <br><br>
+<button id="megabutton"type="button"onclick= 'buymegapin()' >buy megapin</button>
+<br><br><br> <p id="megapinprice">i</p> <br>
+</div>
+
+
+</div>
+</div>
+
+
+<div id="allmeth">
+  <div id="headmeth">
+  <hr>
+  <h1 id="money2"></h1>
+  </div>
+
+  <div id="mademeth">
+  <button type="button"></button>
+  </div>
+
+</div>
+
+
+
+<script>updategraphics();
+start();
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+#headdiv {
+    line-height: 5%;
+    width: 350px;
+    display: block; 
+}
+#pindiv {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+  line-height: 40%;
+  width: 350px;
+  display: block;
+}
+#buydiv {
+  position: relative;
+  bottom: 550px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 40%;
+  width: 350px;
+}
+
+#divcs {
+  position: relative;
+  left: 400px;
+  bottom: 550px;
+  width: 350px;
+  border: 10px groove;
+  height: 285px;
+
+}
+#divwmake {
+  position: relative;
+  left: 900px;
+  bottom: 250px;
+  width: 350px;
+  border: 10px groove;
+  height: 285px;
+
+}
+.buybutton {
+  height: 68px;
+  background-color: #9b9a9a;
+color: rgb(0, 0, 0);
+border: 1px solid black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 300px;
+  transition-duration: 0.1s;
+}
+.buybutton:hover {
+  background-color: #494848;
+  color: white;
+}
+#allpin {
+  width: 100%;
+  height: 575px;
+}
